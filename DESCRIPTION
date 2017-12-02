@@ -1,0 +1,17 @@
+Package: myRdocs
+Authors@R: person("Christopher", "Dienes", email = "crdienes@gmail.com", role = c("aut", "cre"))
+Version: 0.0.0
+Date: 2017-12-02
+License: GPL (>= 2)
+Encoding: UTF-8
+Title: Templates for R Documents
+Description: A collection of templates for creating r documents. Many thanks to the open source community for getting this started. For example, R markdown templates are modifications based on https://github.com/juba/rmdformats.
+Imports: 
+    knitr,
+    rmarkdown,
+    bookdown,
+    htmltools,
+    questionr
+URL: https://github.com/ChrisDienes/myRdocs
+RoxygenNote: 6.0.1
+VignetteBuilder: knitr
