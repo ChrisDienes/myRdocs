@@ -1,5 +1,6 @@
 ---
 title: "Sample document"
+headercol: "#1e90ff"
 output:
   myRdocs::material:
     highlight: kate
