@@ -1,7 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.travis\.yml$
-^inst/rmarkdown/templates/html_clean$
-^inst/rmarkdown/templates/html_clean_projecttemplate$
+^.*html_clean.*$
 inst/sample_file
 resources
