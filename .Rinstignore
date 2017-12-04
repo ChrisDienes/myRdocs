@@ -1,6 +1,6 @@
 
 ^.*html_clean.*$
 ^.*html_docco.*$
-^.*html_readthedown.*$
+^.*readthedown.*$
 ^.*material_projecttemplate.*$
 ^.*sample_file.*$
