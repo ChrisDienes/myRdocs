@@ -2,5 +2,7 @@
 ^\.Rproj\.user$
 ^\.travis\.yml$
 ^.*html_clean.*$
-inst/sample_file
-resources
+^.*html_docco.*$
+^.*html_readthedown.*$
+^.*material_projecttemplate.*$
+^.*sample_file.*$
