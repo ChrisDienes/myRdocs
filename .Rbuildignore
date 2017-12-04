@@ -3,3 +3,5 @@
 resources
 ^\.travis\.yml$
 inst/sample_file
+inst/rmarkdown/templates/html_clean
+inst/rmarkdown/templates/html_clean_projecttemplate
