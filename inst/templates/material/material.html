@@ -77,6 +77,22 @@ $$(document).ready(function () {
 </script>
 $endif$
 
+<!-- header color -->
+$if(headercol)$
+<style type="text/css">
+  .header-panel {
+    background-color: $headercol$;
+  }
+</style>	
+$endif$
+$else$
+<style type="text/css">
+  .header-panel {
+    background-color: #009587;
+  }
+</style>
+$endif$
+
 </head>
 
 <body>
