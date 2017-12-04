@@ -78,10 +78,10 @@ $$(document).ready(function () {
 $endif$
 
 <!-- header color -->
-$if(!empty(headercol))$
+$if(headercol)$
 <style type="text/css">
   .header-panel {
-    background-color: $headercol$;
+    background-color: headercol;
   }
 </style>	
 $else$
