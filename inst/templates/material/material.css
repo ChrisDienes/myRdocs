@@ -5,7 +5,8 @@
 }
 
 #logo {
-  height: 95%;
+  height: 100%;
+  padding: 20px;  
   vertical-align: middle;
 }
 
