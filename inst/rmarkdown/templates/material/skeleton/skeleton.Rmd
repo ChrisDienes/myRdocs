@@ -1,7 +1,8 @@
 ---
 title: "Sample Document"
 headercss: "background-color: #1e90ff;"
-logo: "https://branding.seagate.com/content/thumb/png/aa038780-0daa-426f-abca-88c1f4d05bcf"
+#logo: "insert path to local logo.png"
+#favicon: "insert path to local favicon.ico"
 output:
   myRdocs::material:
     highlight: kate
