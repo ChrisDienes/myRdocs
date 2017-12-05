@@ -1,6 +1,7 @@
 ---
-title: "Sample document"
+title: "Sample Document"
 headercss: "background-color: #1e90ff;"
+logo: "https://branding.seagate.com/content/thumb/png/aa038780-0daa-426f-abca-88c1f4d05bcf"
 output:
   myRdocs::material:
     highlight: kate
