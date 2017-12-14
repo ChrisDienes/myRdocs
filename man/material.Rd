@@ -6,7 +6,7 @@
 \usage{
 material(fig_width = 6, fig_height = 6, fig_caption = TRUE,
   highlight = "kate", lightbox = TRUE, thumbnails = TRUE,
-  gallery = FALSE, mathjax = "rmdformats", pandoc_args = NULL,
+  gallery = FALSE, mathjax = "myRdocs", pandoc_args = NULL,
   use_bookdown = FALSE, ...)
 }
 \arguments{
