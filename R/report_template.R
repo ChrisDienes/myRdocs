@@ -25,9 +25,9 @@ report_template = function(){
       dir.create(path = path)
       file_name = paste0(path, "/report.Rnw")
       fileConn<-file(file_name)
-      writeLines(c("%% R Latex Document",
-                   "%% Use knitr not sweave.",
-                   "%% You may need to change global options in RStudio to weave with knitr",
+      writeLines(c("% !Rnw weave = knitr",
+                   "",
+                   "%% R Latex Document",
                    "",
                    "%%%% References contained in file %%%%",
                    "\\RequirePackage{filecontents}",
