@@ -20,7 +20,7 @@ getwd()
 ### If you want to change directory:
 # setwd(...path...)
 ### Create folder and template report:
-report_template()
+myRdocs::report_template()
 ```
 
 ## Credits
