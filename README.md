@@ -11,7 +11,7 @@ devtools::install_github('ChrisDienes/myRdocs')
 
 ## Usage
 
-**R markdown template:** Create a new R markdown file by selecting the myRdocs material design from the template dialog box.
+**R markdown template:** Create a new R markdown file by selecting the _myRdocs material design_ from the template dialog box.
 
 **Latex Report template:** Set the desired working directory and run:
 ```r
