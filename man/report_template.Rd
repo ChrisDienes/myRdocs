@@ -10,7 +10,7 @@ report_template()
 Generate Latex Report Template.
 }
 \details{
-Creates a folder under \code{getwd()} named \code{report_Sys.Date()}. Folder contains file \code{report.Rnw} which is automatically opened in the editor.
+Creates a folder under \code{getwd()} named \code{report_Sys.Date()}. Folder contains file \code{report.Rnw} which is automatically opened in the editor, as well as \code{references.bib} for bibtex references.
 }
 \examples{
 # setwd(...path...)

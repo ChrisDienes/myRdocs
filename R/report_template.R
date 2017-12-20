@@ -1,6 +1,6 @@
 #' Generate Latex Report Template.
 #'
-#' @details Creates a folder under \code{getwd()} named \code{report_Sys.Date()}. Folder contains file \code{report.Rnw} which is automatically opened in the editor. 
+#' @details Creates a folder under \code{getwd()} named \code{report_Sys.Date()}. Folder contains file \code{report.Rnw} which is automatically opened in the editor, as well as \code{references.bib} for bibtex references. 
 #' @examples
 #' # setwd(...path...)
 #' # report_template()
@@ -23,16 +23,9 @@ report_template = function(){
     }
     if(a %in% c("y","Y")){
       dir.create(path = path)
-      file_name = paste0(path, "/report.Rnw")
-      fileConn<-file(file_name)
-      writeLines(c("% !Rnw weave = knitr",
-                   "",
-                   "%% R Latex Document",
-                   "",
-                   "%%%% References contained in file %%%%",
-                   "\\RequirePackage{filecontents}",
-                   "\\begin{filecontents*}{\\jobname.bib}",
-                   "@Book{book1,",
+      bib_name = paste0(path, "/references.bib")
+      bibConn<-file(bib_name)
+      writeLines(c("@Book{book1,",
                    "  author    = {bookauthor},",
                    "  title     = {booktitle},",
                    "  edition   = {1},",
@@ -47,7 +40,21 @@ report_template = function(){
                    "  year    = {1901},",
                    "  note    = {Available at this url},",
                    "}",
-                   "\\end{filecontents*}",
+                   "@Manual{rlang,",
+                   "   title = {R: A Language and Environment for Statistical Computing},",
+                   " author = {{R Core Team}},",
+                   " organization = {R Foundation for Statistical Computing},",
+                   " address = {Vienna, Austria},",
+                   " year = {2017},",
+                   " url = {https://www.R-project.org/},",
+                   "}"), 
+                 bibConn)
+      close(bibConn)
+      file_name = paste0(path, "/report.Rnw")
+      fileConn<-file(file_name)
+      writeLines(c("% !Rnw weave = knitr",
+                   "",
+                   "%% R Latex Document",
                    "",
                    "\\documentclass[11pt]{article}",
                    "\\setlength{\\textwidth}{6.5in}",
@@ -65,6 +72,8 @@ report_template = function(){
                    "\\usepackage{fancyhdr}     % for fancy header",
                    "\\usepackage{changepage}   % for the adjustwidth environment",
                    "\\newenvironment{adj}{\\begin{adjustwidth}{1.5cm}{}}{\\end{adjustwidth}}",
+                   "\\usepackage[backend=bibtex, sorting=none]{biblatex}",
+                   "\\bibliography{references}",
                    "",
                    "\\begin{document}",
                    "\\fancypagestyle{firststyle}",
@@ -77,11 +86,16 @@ report_template = function(){
                    "%\\fancyfoot[R]{\\raisebox{6.0ex-\\height}{\\includegraphics[width=1.5cm]{logo.jpg}}}",
                    "%\\fancyfoot[L]{\\raisebox{1.2ex-\\height}{COMPANY XYZ CONFIDENTIAL}}",
                    "",
-                   "%%%% Load R packages %%%%",
-                   "<<echo = FALSE>>==",
+                   "%%%% Setup R packages and other stuff %%%%",
+                   "<<setup-r, echo = FALSE, include=FALSE, cache=FALSE,>>==",
                    "library(knitr)",
                    "library(xtable)",
                    "library(ggplot2)",
+                   "opts_chunk$set(fig.path='figures/plots-', fig.align='center', fig.show='hold', eval=TRUE, echo=TRUE)",
+                   "options(replace.assign=TRUE,width=80)",
+                   "Sys.setenv(TEXINPUTS=getwd(),",
+                   "          BIBINPUTS=getwd(),",
+                   "          BSTINPUTS=getwd())",
                    "@",
                    "",
                    "%%%% Latex code: %%%%%",
@@ -123,7 +137,7 @@ report_template = function(){
                    "",
                    "Example plot below...",
                    "",
-                   "\\begin{figure}[h]",
+                   "\\begin{figure}[ht]",
                    "<<echo=FALSE, fig.align='center', out.width='0.5\\\\textwidth', message=FALSE>>=",
                    "df <- data.frame(a= c(1:10), b = c (10:1))",
                    "ggplot(data = df, aes(a, b)) + geom_line()",
@@ -136,16 +150,17 @@ report_template = function(){
                    "I can't do that...",
                    "",
                    "%%%% References %%%%",
-                   "\\nocite{*} % to test all bib entrys",
-                   "\\bibliographystyle{plain}",
-                   "\\bibliography{\\jobname} % <=== calls bib file created with filecontents!",
+                   "\\printbibliography",
+                   "\\nocite{*} % Include references not cited",
                    "",
                    "\\end{document}"), 
                  fileConn)
       close(fileConn)
       file.edit(file_name)
-      cat(paste0("Success: Directory created at ", path, 
-                 "\nSuccess: Sweave file opened in editor: ", path,"/report.Rnw"))
+      cat(paste0("Success: Directory created at ", path,
+                 "\nSuccess: Bibtex reference file created in directory.",
+                 "\nSuccess: Sweave file created in directory.",
+                 "\nSuccess: Sweave file opened in editor"))
     } else {
       cat("Aborted: No directory created.")
     }
