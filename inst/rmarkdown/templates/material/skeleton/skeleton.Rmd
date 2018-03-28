@@ -88,6 +88,8 @@ kable(tab)
 
 ```
 
+<hr>
+
 Here we display a crosstab displayed in several different ways with a "pills"
 interface. To do this, just pass your `table()` result to the `pilltabs()`
 function.
@@ -99,6 +101,21 @@ tab <- table(iris$Species, iris$seplc)
 pilltabs(tab)
 
 ```
+
+<hr>
+
+Below is a datatable example which depends on the `DT` package. The code is not evaluated. 
+
+```{r DT_ex, eval = FALSE, echo=TRUE}
+library(DT)
+datatable(iris, options = list(
+  searching = FALSE,
+  pageLength = 5,
+  lengthMenu = c(5, 10, 15, 20) 
+)) %>% formatRound(2:3, 2)
+
+```
+
 
 # Figures
 
