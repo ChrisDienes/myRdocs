@@ -18,7 +18,7 @@ output:
 
 <!-- Below is an example of how to add/modify custom css -->
 <!-- The example demonstrates how to change the color scheme when using in-line `code` --> 
-<style type="text/css>
+<style type="text/css">
   code {
     	color: #c7254e;
     	background-color: #f9f2f4;
