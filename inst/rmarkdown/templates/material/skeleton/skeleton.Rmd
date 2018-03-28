@@ -120,6 +120,10 @@ d <- data.frame(x=rnorm(100))
 ggplot(data=d) + geom_histogram(aes(x=x), bins = 30)
 ```
 
+## Centering and Misc Images
+
+This is how you center a plot (note: sometimes you may want to save R plots as png/jpg/svg and then source in using `<img src = "...">`):
+
 <p align = "center"> 
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Bradypus.jpg/220px-Bradypus.jpg" alt="Example Plot">
 </p>
