@@ -45,8 +45,8 @@ opts_knit$set(width = 75)
 
 # Code and verbatim
 
+These current don't work with HTML output:
 Test reference to section \@ref(verb).
-
 Test reference to figure \@ref(fig:gghist).
 
 
