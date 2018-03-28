@@ -26,7 +26,7 @@ output:
 </style>
 
 
-```{r knitr_init, echo=FALSE, results="asis", cache=FALSE}
+```{r knitr_init, echo=FALSE, include=FALSE, results="asis", cache=FALSE}
 library(knitr)
 library(myRdocs)
 
