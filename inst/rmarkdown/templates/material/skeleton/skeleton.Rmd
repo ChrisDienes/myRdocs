@@ -1,8 +1,9 @@
 ---
 title: "Sample Document"
-headercss: "background-color: #1e90ff;"
-#logo: "insert path to local logo.png"
-#favicon: "insert path to local favicon.ico"
+headercss: "background-color: #03568a;"
+sectiontitlecss: "color: #03568a;"
+#logo: "image.svg"
+#favicon: "favicon.ico"
 output:
   myRdocs::material:
     highlight: kate
@@ -14,6 +15,15 @@ output:
     fig_height: 4
     use_bookdown: true
 ---
+
+<!-- Below is an example of how to add/modify custom css -->
+<!-- The example demonstrates how to change the color scheme when using in-line `code` --> 
+<style>
+  code {
+    	color: #c7254e;
+    	background-color: #f9f2f4;
+	}
+</style>
 
 
 ```{r knitr_init, echo=FALSE, results="asis", cache=FALSE}
