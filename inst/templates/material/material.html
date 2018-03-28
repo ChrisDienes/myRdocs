@@ -92,6 +92,21 @@ $else$
 </style>
 $endif$
 	
+<!-- header color -->
+$if(sectiontitlecss)$
+<style type="text/css">
+  .pages h1 {
+    $sectiontitlecss$
+  }
+</style>	
+$else$
+<style type="text/css">
+  .pages h1 {
+    color: rgb(82, 101, 162);
+  }
+</style>
+$endif$
+	
 <!-- favicon image -->
 $if(favicon)$
 	<link rel="icon" type="image/png" href="$favicon$">
