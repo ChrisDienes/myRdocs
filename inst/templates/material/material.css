@@ -6,7 +6,7 @@
 
 #logo {
   height: 100%;
-  padding: 20px;  
+  padding: 30px;  
   vertical-align: middle;
 }
 
@@ -292,3 +292,27 @@ table .panel-body {
 .table td {
   padding: 8px 15px;
 }
+
+
+   body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+   }
+   container-fluid main-container {
+    position: absolute;
+    top: 0;
+    bottom: 200px;
+    left: 0;
+    right: -17px; /* Increase/Decrease this value for cross-browser compatibility */
+    overflow-y: scroll;
+    overflow-x: scroll;
+   }
+   .col-xs-10  {
+    padding-bottom:200px;
+   }
+   code {
+      color: #c7254e;
+      background-color: #f9f2f4;
+    }
