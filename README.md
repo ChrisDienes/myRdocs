@@ -11,7 +11,7 @@ devtools::install_github('ChrisDienes/myRdocs')
 
 ## Usage
 
-**R markdown template:** Create a new R markdown file inside of RStudio by going to _File > New File > R Markdown... > From Template_ and then select either _myRdocs stater template (HTML)_ or _myRdocs material design (HTML)_ from the template options. Once the template file opens, click the RStudio `knitr` button to render the template document.  
+**R markdown template:** Create a new R markdown file inside of RStudio by going to _File > New File > R Markdown... > From Template_ and then select either _myRdocs stater template (HTML)_ or _myRdocs material design (HTML)_ from the template options. Once the template file opens, click the RStudio `knit` button to render the template document.  
 
 **Latex Report template:** Set the desired working directory and run:
 ```r
