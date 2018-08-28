@@ -1,7 +1,7 @@
 Package: myRdocs
 Authors@R: person("Christopher", "Dienes", email = "crdienes@gmail.com", role = c("aut", "cre"))
-Version: 0.0.0
-Date: 2017-12-02
+Version: 0.0.2
+Date: 2018-08-28
 License: GPL (>= 2)
 Encoding: UTF-8
 Title: Templates for R Documents
@@ -11,7 +11,8 @@ Imports:
     rmarkdown,
     bookdown,
     htmltools,
-    questionr
+    questionr,
+    kableExtra
 URL: https://github.com/ChrisDienes/myRdocs
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
