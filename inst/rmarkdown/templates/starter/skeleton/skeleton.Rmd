@@ -1,0 +1,195 @@
+---
+### set params to be used in document:
+params: 
+  ex_1: "title"
+  ex_2: "42" 
+### set custom title:
+title: "`r paste0('This is the template <b><em>', params$ex_1, '</em></b>')`"
+### rarely will you change these:
+logo: "`r system.file('Rlogo.svg', package = 'myRdocs')`"
+favicon: "`r system.file('Rfavicon.ico', package = 'myRdocs')`"
+headercss: "background-color: #ff8d1e;"
+sectiontitlecss: "color: #ff1e90;"
+thcss: "background-color: #1E90FF;"
+toccss: "background-color: #1E90FF; border-color: #1E90FF;"
+### you will likely never need to change this:
+output:
+  myRdocs::starter
+---
+
+<!-- 
+Below is an example of adding some custom css. 
+The example demonstrates how to change the color scheme when using in-line `code` 
+--> 
+<style type="text/css">
+  code {
+    	color: #c7254e;
+    	background-color: #f9f2f4;
+	}
+</style>
+
+```{r options, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# R Code
+
+Below is some code that does NOT run:
+
+```{r code_ex_1, eval=FALSE}
+mean(rnorm(100))
+```
+
+<hr>
+
+Below is some code that does run:
+
+```{r code_ex_2, eval=TRUE}
+mean(rnorm(100))
+```
+
+<hr>
+
+Below is some code that runs but is hidden:
+
+```{r code_ex_3, eval=TRUE, echo = FALSE}
+x <- mean(rnorm(100))
+```
+
+The hidden code chunk computes `x <- mean(rnorm(100))`. The value can be returned in-line like this: `r x`. 
+
+# Document Parameters
+
+Sometimes it's helpful to add report parameters, which are especially useful for automation. The document's title includes a parameter and here is a second example: `r params$ex_2`.  
+
+# Tables
+
+Below is some hidden code which makes a kable table:
+
+```{r code_ex_4, eval=TRUE, echo = FALSE, message = FALSE}
+require(kableExtra, quietly = TRUE)
+require(knitr, quietly = TRUE)
+dt <- mtcars[1:5, 1:6]
+kable(dt) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+<hr>
+
+Below is an example markdown table:
+
+| Column Name 1                    | Column Name 2                                    |
+| -------------------------------- | ------------------------------------------------ |
+| Field 1                          | Something 1                                      |
+| Field 2	                         | Something 2                                      |
+| Field 3	                         | Something 3                                      |
+
+# Images
+
+Here is a plot created by R:
+
+```{r, echo=FALSE, fig.align = 'center'}
+plot(cars)
+```
+
+Below is a centered image from the web:
+
+<p align = "center"> 
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Bradypus.jpg/220px-Bradypus.jpg" alt="Example Plot">
+</p>
+
+
+# Headings
+
+This is an example of a first level heading.
+
+## Second Level Heading 1
+
+This is an example of a second level section.
+
+## Second Level Heading 2
+
+Here's another example of a second level section.
+
+# Latex Style Equations
+
+Here is a Latex style in-line equation $e^{i\pi} = -1$, and here is a display expression:
+
+$$f(x) = \frac{1}{1+\exp(-x)}.$$
+
+# Drop Down Menus
+
+You can include advanced HTML/CSS/JavaScript as well. Here is an example of a drop down menu:
+
+```{r, echo = FALSE}
+### create the drop down menu:
+knitr::asis_output(htmltools::htmlPreserve("
+<div style='display:inline-block;text-align:center;width:100%;'>
+  <div style='display:inline-block;text-align:center;width:300px;color:white;' data-num='0'>
+    <form>
+      <fieldset>
+        <div class='form-group'>
+          <label for='filter1' style = 'color:black;'>Plot Filter</label>
+          <select class='plot_filter form-control' style='color:black;font-weight: bold;'>
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Green</option>
+          </select>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+"))
+
+### create items:
+knitr::asis_output(htmltools::htmlPreserve("
+<div style='display:inline-block;text-align:center;height:200px;width:100%;'>
+  <div id = 'Red' style = 'display:inline-block;text-align:center;'>
+    <img src='https://upload.wikimedia.org/wikipedia/commons/d/da/Cardinal.jpg' style = 'height:200px;'>
+  </div>
+  <div id = 'Blue' style = 'display:none;text-align:center;'>
+    <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Cyanerpes_cyaneus_-Diergaarde_Blijdorp%2C_Netherlands-8a.jpg/683px-Cyanerpes_cyaneus_-Diergaarde_Blijdorp%2C_Netherlands-8a.jpg' style = 'height:200px;'>
+  </div>
+  <div id = 'Green' style = 'display:none;text-align:center;'>
+    <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Rotbugara_2010.JPG/768px-Rotbugara_2010.JPG' style = 'height:200px;'>
+  </div>
+</div>
+"))
+
+### add in the javascript:
+knitr::asis_output(htmltools::htmlPreserve("
+<script>
+  var innerContainer = document.querySelector(\"[data-num='0'\"),
+      plotSelector = innerContainer.querySelector('.plot_filter');
+      
+  function plot_dropdown(value) {
+    document.getElementById('Red').style.display = 'none';
+    document.getElementById('Blue').style.display = 'none';
+    document.getElementById('Green').style.display = 'none';
+    if (value == 'Red'){
+      document.getElementById('Red').style.display = 'inline-block';
+    } else if (value == 'Blue') {
+      document.getElementById('Blue').style.display = 'inline-block';
+    } else if (value == 'Green') {
+      document.getElementById('Green').style.display = 'inline-block';
+    } 
+  };
+  
+  function updatePlot(){
+    plot_dropdown(plotSelector.value);
+  } 
+  
+ plotSelector.addEventListener('change', updatePlot, false); 
+ 
+</script>
+"))
+```
+
+
+# Learning More
+
+Here is a helpful <a href = "https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf" target = "_blank" >link</a> which opens in a new tab.
+
+Here is a helpful [link](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) which does not open in a new tab.
