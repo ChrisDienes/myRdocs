@@ -68,8 +68,8 @@ Sometimes it's helpful to add report parameters, which are especially useful for
 Below is some hidden code which makes a kable table:
 
 ```{r code_ex_4, eval=TRUE, echo = FALSE, message = FALSE}
-require(kableExtra, quietly = TRUE)
-require(knitr, quietly = TRUE)
+suppressWarnings(require(kableExtra, quietly = TRUE))
+suppressWarnings(require(knitr, quietly = TRUE))
 dt <- mtcars[1:5, 1:6]
 kable(dt) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
